@@ -1,5 +1,8 @@
 # aws-partner-analytics-roadmap
 
+## Learning Path
+![img](./docs/learning_path.png)
+
 ## Traning
 - Data Collect
   - Kinesis
