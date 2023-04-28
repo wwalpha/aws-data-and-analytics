@@ -2,15 +2,15 @@
 
 ## Compute
 - EC2
-- Lightsail
+Lightsail
 - Lambda
 - Batch
-- Elastic Beanstalk
-- Serverless Application Repository
-- AWS Outposts
-- EC2 Image Builder
-- AWS App Runner
-- AWS SimSpace Weaver
+Elastic Beanstalk
+Serverless Application Repository
+AWS Outposts
+EC2 Image Builder
+AWS App Runner
+AWS SimSpace Weaver
 
 ## Containers
 Elastic Container Registry
@@ -24,13 +24,13 @@ EFS
 FSx
 S3 Glacier
 Storage Gateway
-AWS Backup
+- AWS Backup
 AWS Elastic Disaster Recovery
 
 ## Database
 RDS
 ElastiCache
-Neptune
+- Neptune
 Amazon QLDB
 Amazon DocumentDB
 Amazon Keyspaces
@@ -43,8 +43,7 @@ AWS Migration Hub
 AWS Application Migration Service
 Application Discovery Service
 Database Migration Service
-AWS Transfer Family
-AWS Snow Family
+- AWS Transfer Family
 DataSync
 AWS Mainframe Modernization
 
@@ -52,27 +51,27 @@ AWS Mainframe Modernization
 VPC
 CloudFront
 Route 53
-API Gateway
-Direct Connect
-AWS App Mesh
-AWS Cloud Map
-Global Accelerator
+- API Gateway
+- Direct Connect
+- AWS App Mesh
+- AWS Cloud Map
+- Global Accelerator
 Route 53 Application Recovery Controller
 AWS Private 5G
 
 ## Developer Tools
-CodeStar
-CodeCommit
-CodeBuild
-CodeDeploy
-CodePipeline
-Cloud9
+- CodeStar
+- CodeCommit
+- CodeBuild
+- CodeDeploy
+- CodePipeline
+- Cloud9
 CloudShell
 X-Ray
 AWS FIS
 CodeArtifact
 Amazon CodeCatalyst
-AWS AppConfig
+- AWS AppConfig
 Amazon CodeWhisperer
 Application Composer
 
@@ -83,48 +82,48 @@ Activate for Startups
 Support
 
 ## Management & Governance
-AWS Organizations
+- AWS Organizations
 CloudWatch
 AWS Auto Scaling
-CloudFormation
-Config
+- CloudFormation
+- Config
 OpsWorks
-Service Catalog
-Systems Manager
+- Service Catalog
+- Systems Manager
 Trusted Advisor
-Control Tower
-AWS License Manager
+- Control Tower
+- AWS License Manager
 AWS Well-Architected Tool
 AWS Health Dashboard
 AWS Chatbot
 Launch Wizard
 AWS Compute Optimizer
-Resource Groups & Tag Editor
+- Resource Groups & Tag Editor
 Amazon Grafana
 Amazon Prometheus
 AWS Resilience Hub
 Incident Manager
 AWS Proton
-CloudTrail
+- CloudTrail
 AWS Resource Explorer
 AWS User Notifications
 AWS Telco Network Builder
 
 ## Machine Learning
-Amazon SageMaker
+- Amazon SageMaker
 Amazon Augmented AI
-Amazon CodeGuru
-Amazon DevOps Guru
-Amazon Comprehend
+- Amazon CodeGuru
+- Amazon DevOps Guru
+- Amazon Comprehend
 Amazon Forecast
-Amazon Fraud Detector
-Amazon Kendra
+- Amazon Fraud Detector
+- Amazon Kendra
 Amazon Personalize
 Amazon Polly
-Amazon Rekognition
-Amazon Textract
-Amazon Transcribe
-Amazon Translate
+- Amazon Rekognition
+- Amazon Textract
+- Amazon Transcribe
+- Amazon Translate
 AWS DeepComposer
 AWS DeepLens
 AWS DeepRacer
@@ -142,14 +141,14 @@ Amazon Omics
 Athena
 Amazon Redshift
 CloudSearch
-Amazon OpenSearch Service
-Kinesis
-QuickSight
-Data Pipeline
+- Amazon OpenSearch Service
+- Kinesis
+- QuickSight
+- Data Pipeline
 AWS Data Exchange
-AWS Lake Formation
+- AWS Lake Formation
 MSK
-AWS Glue DataBrew
+- AWS Glue DataBrew
 Amazon FinSpace
 AWS Glue
 EMR
@@ -157,22 +156,22 @@ AWS Clean Rooms
 Amazon DataZone
 
 ## Security, Identity, & Compliance
-IAM
-Resource Access Manager
+- IAM
+- Resource Access Manager
 Cognito
-Secrets Manager
-GuardDuty
+- Secrets Manager
+- GuardDuty
 Amazon Inspector
 Amazon Macie
-IAM Identity Center (successor to AWS Single Sign-On)
-Certificate Manager
-Key Management Service
-CloudHSM
-Directory Service
-WAF & Shield
-AWS Firewall Manager
+- IAM Identity Center
+- Certificate Manager
+- Key Management Service
+- CloudHSM
+- Directory Service
+- WAF & Shield
+- AWS Firewall Manager
+- Security Hub
 AWS Artifact
-Security Hub
 Detective
 AWS Signer
 AWS Private Certificate Authority
@@ -180,52 +179,27 @@ AWS Audit Manager
 Security Lake
 Amazon Verified Permissions
 
-## AWS Cost Management
-AWS Cost Explorer
-AWS Budgets
-AWS Marketplace Subscriptions
-AWS Application Cost Profiler
-AWS Billing Conductor
-
 
 ## Application Integration
-Step Functions
+- Step Functions
+- Simple Notification Service
+- Simple Queue Service
+- Managed Apache Airflow
+SWF
 Amazon AppFlow
 Amazon EventBridge
 Amazon MQ
-Simple Notification Service
-Simple Queue Service
-SWF
-Managed Apache Airflow
-
-## Business Applications
-Amazon Connect
-Amazon Pinpoint
-Amazon Honeycode
-Amazon Chime
-Amazon Simple Email Service
-Amazon WorkDocs
-Amazon WorkMail
-Alexa for Business
-AWS Supply Chain
-AWS Wickr
-Amazon Chime SDK
-
-## End User Computing
-WorkSpaces
-AppStream 2.0
-WorkSpaces Web
 
 ## Internet of Things
-IoT Core
+- IoT Core
+- IoT Analytics
 FreeRTOS
 IoT 1-Click
-IoT Analytics
 IoT Device Defender
 IoT Device Management
 IoT Greengrass
 IoT SiteWise
 IoT Events
-AWS IoT FleetWise
 IoT RoboRunner
 IoT TwinMaker
+AWS IoT FleetWise
