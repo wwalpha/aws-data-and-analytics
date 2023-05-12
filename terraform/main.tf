@@ -1,30 +1,69 @@
-# ----------------------------------------------------------------------------------------------
-# AWS Provider
-# ----------------------------------------------------------------------------------------------
-provider "aws" {}
-
 terraform {
   backend "local" {
     path = "./tfstate/terraform.tfstate"
   }
 }
 
-module "security" {
-  source = "./security"
-  prefix = local.prefix
+# ----------------------------------------------------------------------------------------------
+# AWS Provider
+# ----------------------------------------------------------------------------------------------
+provider "aws" {
+  region = "us-east-1"
+  alias  = "ResearchOwner"
+
+  assume_role {
+    role_arn = "arn:aws:iam::601711916881:role/DataMeshInfraRole"
+  }
 }
 
-module "transform" {
-  source = "./transform"
-  prefix = local.prefix
+provider "aws" {
+  region = "us-east-1"
+  alias  = "Central"
+
+  assume_role {
+    role_arn = "arn:aws:iam::016725430159:role/DataMeshInfraRole"
+  }
 }
 
-module "iot" {
-  source                   = "./iot"
-  prefix                   = local.prefix
-  kinesis_data_stream_name = module.transform.kinesis_data_stream_name
-  iam_rule_arn_iot_rule    = module.security.iam_role_arn_iot_rule
+module "central" {
+  source = "./central"
+  prefix = local.prefix
+  providers = {
+    aws = aws.Central
+  }
+
 }
+
+module "producer" {
+  source = "./producer"
+  providers = {
+    aws = aws.ResearchOwner
+  }
+
+  prefix              = local.prefix
+  account_id_centrail = local.account_id_centrail
+}
+
+module "centralops" {
+  source = "./centralops"
+  prefix = local.prefix
+  providers = {
+    aws = aws.Central
+  }
+
+  producer_buckets = [
+    {
+      raw = module.producer.bucket_name_raw
+    }
+  ]
+}
+
+# module "iot" {
+#   source                   = "./iot"
+#   prefix                   = local.prefix
+#   kinesis_data_stream_name = module.transform.kinesis_data_stream_name
+#   iam_rule_arn_iot_rule    = module.security.iam_role_arn_iot_rule
+# }
 
 # module "networking" {
 #   source = "./networking"

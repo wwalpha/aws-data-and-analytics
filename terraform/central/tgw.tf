@@ -1,12 +1,6 @@
-locals {
-  prefix = "blackbelt"
-
-  account_id_centrail = data.aws_caller_identity.central.account_id
-}
-
 # ----------------------------------------------------------------------------------------------
-# AWS Account
+# AWS Transit Gateway
 # ----------------------------------------------------------------------------------------------
-data "aws_caller_identity" "central" {
-  provider = aws.Central
-}
+# resource "aws_ec2_transit_gateway" "this" {
+#   description = "Shared Transit Gateway"
+# }

@@ -1,5 +1,5 @@
-variable "prefix" {}
+# variable "prefix" {}
 
-variable "kinesis_data_stream_name" {}
+# variable "kinesis_data_stream_name" {}
 
-variable "iam_rule_arn_iot_rule" {}
+# variable "iam_rule_arn_iot_rule" {}
