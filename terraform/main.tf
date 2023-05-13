@@ -53,7 +53,7 @@ module "centralops" {
 
   producer_buckets = [
     {
-      raw = module.producer.bucket_name_raw
+      raw = module.producer.s3_bucket_name_raw
     }
   ]
 }
