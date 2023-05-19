@@ -19,7 +19,7 @@ job.init(args["JOB_NAME"], args)
 # Script generated for node S3 bucket
 S3bucket_node1 = glueContext.create_dynamic_frame.from_catalog(
     database="${aws_glue_catalog_database.raw.name}",
-    table_name="${aws_s3_bucket.raw.bucket}",
+    table_name="${replace(aws_s3_bucket.raw.bucket, "-", "_")}",
     transformation_ctx="S3bucket_node1",
 )
 
