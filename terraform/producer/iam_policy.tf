@@ -69,10 +69,50 @@ resource "aws_iam_policy" "glue_etl" {
       {
         Effect = "Allow"
         Action = [
+          "glue:*",
+          "s3:GetBucketLocation",
+          "s3:ListBucket",
+          "s3:ListAllMyBuckets",
+          "s3:GetBucketAcl",
+          "ec2:DescribeVpcEndpoints",
+          "ec2:DescribeRouteTables",
+          "ec2:CreateNetworkInterface",
+          "ec2:DeleteNetworkInterface",
+          "ec2:DescribeNetworkInterfaces",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeVpcAttribute",
+          "iam:ListRolePolicies",
+          "iam:GetRole",
+          "iam:GetRolePolicy",
+          "cloudwatch:PutMetricData"
+        ]
+        Resource = ["*"]
+      },
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "s3:CreateBucket",
+          "s3:PutBucketPublicAccessBlock"
+        ],
+        "Resource" : [
+          "arn:aws:s3:::aws-glue-*"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
           "s3:GetObject",
-          "s3:ListBucket"
+          "s3:PutObject",
+          "s3:DeleteObject"
         ]
         Resource = [
+          "${aws_s3_bucket.raw.arn}",
+          "${aws_s3_bucket.raw.arn}/*",
+          "${aws_s3_bucket.trusted.arn}",
+          "${aws_s3_bucket.trusted.arn}/*",
+          "${aws_s3_bucket.refined.arn}",
+          "${aws_s3_bucket.refined.arn}/*",
           "${aws_s3_bucket.scripts.arn}",
           "${aws_s3_bucket.scripts.arn}/*",
         ]
@@ -83,17 +123,6 @@ resource "aws_iam_policy" "glue_etl" {
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents",
-        ]
-        Resource = "*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "glue:GetDatabase",
-          "glue:GetTable",
-          "glue:CreateTable",
-          "glue:CreateDatabase",
-          "glue:GetPartitions"
         ]
         Resource = "*"
       }

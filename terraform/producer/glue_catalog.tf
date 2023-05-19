@@ -23,19 +23,18 @@ resource "aws_glue_catalog_database" "raw" {
 }
 
 # ----------------------------------------------------------------------------------------------
+# AWS Glue Catalog Database - Trusted Database
+# ----------------------------------------------------------------------------------------------
+resource "aws_glue_catalog_database" "trusted" {
+  name = "${var.prefix}-trusted-db"
+}
+
+# ----------------------------------------------------------------------------------------------
 # AWS Glue Catalog Database - Refined Database
 # ----------------------------------------------------------------------------------------------
 resource "aws_glue_catalog_database" "refined" {
   name = "${var.prefix}-refined-db"
 }
-
-# ----------------------------------------------------------------------------------------------
-# Glue Catalog Table - Raw Table
-# ----------------------------------------------------------------------------------------------
-# resource "aws_glue_catalog_table" "raw" {
-#   name          = "${var.prefix}-raw-table"
-#   database_name = aws_glue_catalog_database.raw.name
-# }
 
 # ----------------------------------------------------------------------------------------------
 # AWS Glue Job - Raw ETL

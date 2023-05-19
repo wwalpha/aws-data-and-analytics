@@ -8,29 +8,11 @@
 # ----------------------------------------------------------------------------------------------
 # AWS LakeFormation Resource - Producer Raw
 # ----------------------------------------------------------------------------------------------
-resource "aws_lakeformation_resource" "raw" {
-  arn      = "arn:aws:s3:::${var.producer_buckets[count.index].raw}"
+resource "aws_lakeformation_resource" "this" {
+  for_each = toset(var.producer_buckets)
+  arn      = "arn:aws:s3:::${each.key}"
   role_arn = aws_iam_role.lakeformation.arn
-  count    = length(var.producer_buckets)
 }
-
-# # ----------------------------------------------------------------------------------------------
-# # AWS LakeFormation Resource - Producer Refined
-# # ----------------------------------------------------------------------------------------------
-# resource "aws_lakeformation_resource" "refined" {
-#   arn      = "arn:aws:s3:::${var.producer_buckets[count.index].refined}"
-#   role_arn = aws_iam_role.lakeformation.arn
-#   count    = length(var.producer_buckets)
-# }
-
-# # ----------------------------------------------------------------------------------------------
-# # AWS LakeFormation Resource - Producer Trusted
-# # ----------------------------------------------------------------------------------------------
-# resource "aws_lakeformation_resource" "trusted" {
-#   arn      = "arn:aws:s3:::${var.producer_buckets[count.index].trusted}"
-#   role_arn = aws_iam_role.lakeformation.arn
-#   count    = length(var.producer_buckets)
-# }
 
 # resource "aws_lakeformation_permissions" "database" {
 #   principal                     = ${account-target-id}

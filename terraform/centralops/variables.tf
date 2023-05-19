@@ -1,5 +1,5 @@
 variable "prefix" {}
 
 variable "producer_buckets" {
-  type = list(map(string))
+  type = list(string)
 }

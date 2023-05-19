@@ -35,15 +35,15 @@ resource "aws_glue_crawler" "raw" {
 }
 
 # ----------------------------------------------------------------------------------------------
-# AWS Glue Crawler - Refined
+# AWS Glue Crawler - Trusted
 # ----------------------------------------------------------------------------------------------
-resource "aws_glue_crawler" "refined" {
-  database_name = aws_glue_catalog_database.refined.name
-  name          = "${var.prefix}-refined-crawler"
+resource "aws_glue_crawler" "trusted" {
+  database_name = aws_glue_catalog_database.trusted.name
+  name          = "${var.prefix}-trusted-crawler"
   role          = aws_iam_role.raw_crawler.arn
 
   s3_target {
-    path       = "s3://${aws_s3_bucket.refined.bucket}/"
+    path       = "s3://${aws_s3_bucket.trusted.bucket}/"
     exclusions = []
   }
 

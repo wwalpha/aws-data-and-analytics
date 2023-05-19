@@ -42,10 +42,10 @@ resource "aws_glue_trigger" "raw_etl" {
 }
 
 # ----------------------------------------------------------------------------------------------
-# AWS Glue Trigger - Refined Crawler
+# AWS Glue Trigger - Trusted Crawler
 # ----------------------------------------------------------------------------------------------
-resource "aws_glue_trigger" "refined_crawler" {
-  name              = "${var.prefix}-refined-crawler"
+resource "aws_glue_trigger" "trusted_crawler" {
+  name              = "${var.prefix}-trusted-crawler"
   type              = "CONDITIONAL"
   workflow_name     = aws_glue_workflow.this.name
   start_on_creation = false
@@ -58,6 +58,6 @@ resource "aws_glue_trigger" "refined_crawler" {
   }
 
   actions {
-    crawler_name = aws_glue_crawler.refined.name
+    crawler_name = aws_glue_crawler.trusted.name
   }
 }

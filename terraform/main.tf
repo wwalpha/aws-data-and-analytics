@@ -44,6 +44,9 @@ module "producer" {
   account_id_centrail = local.account_id_centrail
 }
 
+# ----------------------------------------------------------------------------------------------
+# Central Operations
+# ----------------------------------------------------------------------------------------------
 module "centralops" {
   source = "./centralops"
   prefix = local.prefix
@@ -52,9 +55,9 @@ module "centralops" {
   }
 
   producer_buckets = [
-    {
-      raw = module.producer.s3_bucket_name_raw
-    }
+    module.producer.s3_bucket_name_raw,
+    module.producer.s3_bucket_name_trusted,
+    module.producer.s3_bucket_name_refined
   ]
 }
 

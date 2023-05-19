@@ -36,23 +36,21 @@ resource "aws_iam_policy" "lakeformation" {
           "s3:GetObject",
           "s3:DeleteObject"
         ]
-        Resource = [
-          "arn:aws:s3:::${var.producer_buckets[0].raw}/*"
-        ]
+        Resource = [for buckent_name in var.producer_buckets : "arn:aws:s3:::${buckent_name}/*"]
       },
       {
-        "Effect" : "Allow",
-        "Action" : [
+        Effect = "Allow"
+        Action = [
           "s3:ListBucket"
         ],
-        "Resource" : [for s in var.producer_buckets : "arn:aws:s3:::${s.raw}/*"]
+        Resource = [for buckent_name in var.producer_buckets : "arn:aws:s3:::${buckent_name}/*"]
       },
       {
-        "Effect" : "Allow",
-        "Action" : [
+        Effect = "Allow"
+        Action = [
           "s3:ListAllMyBuckets"
         ],
-        "Resource" : [for s in var.producer_buckets : "arn:aws:s3:::${s.raw}"]
+        Resource = [for buckent_name in var.producer_buckets : "arn:aws:s3:::${buckent_name}/*"]
       }
     ]
   })

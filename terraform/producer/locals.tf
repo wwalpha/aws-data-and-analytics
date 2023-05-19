@@ -86,7 +86,7 @@ S3bucket_node3 = glueContext.write_dynamic_frame.from_options(
     connection_type="s3",
     format="csv",
     connection_options={
-        "path": "s3://${aws_s3_bucket.refined.bucket}",
+        "path": "s3://${aws_s3_bucket.trusted.bucket}",
         "compression": "gzip",
         "partitionKeys": [],
     },
