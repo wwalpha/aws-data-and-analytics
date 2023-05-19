@@ -5,6 +5,17 @@ output "producer_bucket_name_raw" {
   value = module.producer.s3_bucket_name_raw
 }
 
+# ----------------------------------------------------------------------------------------------
+# Producer Bucket Name - Scripts
+# ----------------------------------------------------------------------------------------------
+output "producer_bucket_name_scripts" {
+  value = module.producer.s3_bucket_name_scripts
+}
+
+# output "test" {
+#   value = module.producer.test
+# }
+
 # # ----------------------------------------------------------------------------------------------
 # # Producer Bucket Name - Refined
 # # ----------------------------------------------------------------------------------------------

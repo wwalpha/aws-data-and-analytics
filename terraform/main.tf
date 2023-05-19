@@ -108,3 +108,5 @@ module "centralops" {
 #   lambda_module_bucket_key  = module.storage.lambda_module_key
 #   lambda_module_version_id  = module.storage.lambda_module_version_id
 # }
+
+# terraform import aws_glue_crawler.MyJob MyJob

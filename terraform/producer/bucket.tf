@@ -13,6 +13,10 @@ resource "aws_s3_object" "raw_dummy" {
   key    = "diabetic_data.csv"
   source = "${path.module}/datas/diabetic_data.csv"
   etag   = filemd5("${path.module}/datas/diabetic_data.csv")
+
+  lifecycle {
+    ignore_changes = [etag]
+  }
 }
 
 # ----------------------------------------------------------------------------------------------
@@ -112,3 +116,30 @@ resource "aws_s3_bucket_policy" "raw_allow_access_from_central" {
 #   bucket = aws_s3_bucket.refined.id
 #   policy = data.aws_iam_policy_document.refined_allow_access_from_another_account.json
 # }
+
+# ----------------------------------------------------------------------------------------------
+# S3 Bucket - Scripts
+# ----------------------------------------------------------------------------------------------
+resource "aws_s3_bucket" "scripts" {
+  bucket = "${var.prefix}-${local.account_id}-scripts"
+}
+
+# ----------------------------------------------------------------------------------------------
+# S3 Bucket Object - Scripts
+# ----------------------------------------------------------------------------------------------
+resource "aws_s3_object" "raw_etl_script" {
+  bucket  = aws_s3_bucket.scripts.bucket
+  key     = "raw-etl.py"
+  content = local.raw_etl
+
+  lifecycle {
+    ignore_changes = [etag]
+  }
+}
+
+# ----------------------------------------------------------------------------------------------
+# S3 Bucket - Refined
+# ----------------------------------------------------------------------------------------------
+resource "aws_s3_bucket" "refined" {
+  bucket = "${var.prefix}-${local.account_id}-refined"
+}

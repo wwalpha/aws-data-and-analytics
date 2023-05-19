@@ -81,18 +81,18 @@ ApplyMapping_node2 = ApplyMapping.apply(
 )
 
 # Script generated for node S3 bucket
-S3bucket_node3 = glueContext.getSink(
-    path="s3://${aws_s3_bucket.refined.bucket}",
+S3bucket_node3 = glueContext.write_dynamic_frame.from_options(
+    frame=ApplyMapping_node2,
     connection_type="s3",
-    updateBehavior="UPDATE_IN_DATABASE",
-    partitionKeys=[],
-    compression="gzip",
-    enableUpdateCatalog=True,
+    format="csv",
+    connection_options={
+        "path": "s3://${aws_s3_bucket.refined.bucket}",
+        "compression": "gzip",
+        "partitionKeys": [],
+    },
     transformation_ctx="S3bucket_node3",
 )
-S3bucket_node3.setCatalogInfo(catalogDatabase="${aws_glue_catalog_database.raw.name}", catalogTableName="test001")
-S3bucket_node3.setFormat("csv")
-S3bucket_node3.writeFrame(ApplyMapping_node2)
+
 job.commit()
 EOT
 }
