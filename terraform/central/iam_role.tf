@@ -73,3 +73,93 @@ resource "aws_iam_role" "cognito_unauth_role" {
 }
 EOF
 }
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role - Lambda Send Approval Notify
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role" "lambda_send_approval_notify" {
+  name               = "${upper(var.prefix)}_SendApprovalNotityRole"
+  assume_role_policy = data.aws_iam_policy_document.lambda.json
+}
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role Policy Attachment - Lambda Share Catalog Item
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role_policy_attachment" "lambda_send_approval_notify_basic" {
+  role       = aws_iam_role.lambda_send_approval_notify.name
+  policy_arn = data.aws_iam_policy.lambda_basic_execution.arn
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_send_approval_notify_inline" {
+  role       = aws_iam_role.lambda_send_approval_notify.name
+  policy_arn = aws_iam_policy.lambda_send_approval_notify.arn
+}
+
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role - Lambda Share Catalog Item
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role" "lambda_share_catalog_item" {
+  name               = "${upper(var.prefix)}_ShareCatalogItemRole"
+  assume_role_policy = data.aws_iam_policy_document.lambda.json
+}
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role Policy Attachment - Lambda Share Catalog Item
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role_policy_attachment" "lambda_share_catalog_item_basic" {
+  role       = aws_iam_role.lambda_share_catalog_item.name
+  policy_arn = data.aws_iam_policy.lambda_basic_execution.arn
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_share_catalog_item_lake_formation_cross_account_manager" {
+  role       = aws_iam_role.lambda_share_catalog_item.name
+  policy_arn = data.aws_iam_policy.lake_formation_cross_account_manager.arn
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_share_catalog_item_inline" {
+  role       = aws_iam_role.lambda_share_catalog_item.name
+  policy_arn = aws_iam_policy.lambda_share_catalog_item.arn
+}
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role - Lambda Activity Approver
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role" "lambda_activity_approver" {
+  name               = "${upper(var.prefix)}_ActivityApproverRole"
+  assume_role_policy = data.aws_iam_policy_document.lambda.json
+}
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role Policy Attachment - Lambda Activity Approver
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role_policy_attachment" "lambda_activity_approver_basic" {
+  role       = aws_iam_role.lambda_activity_approver.name
+  policy_arn = data.aws_iam_policy.lambda_basic_execution.arn
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_activity_approver_inline" {
+  role       = aws_iam_role.lambda_activity_approver.name
+  policy_arn = aws_iam_policy.lambda_activity_approver.arn
+}
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role - Lambda Get Table Details
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role" "lambda_get_table_details" {
+  name               = "${upper(var.prefix)}_GetTableDetailsRole"
+  assume_role_policy = data.aws_iam_policy_document.lambda.json
+}
+
+# ----------------------------------------------------------------------------------------------
+# IAM Role Policy Attachment - Lambda Activity Approver
+# ----------------------------------------------------------------------------------------------
+resource "aws_iam_role_policy_attachment" "lambda_get_table_details_basic" {
+  role       = aws_iam_role.lambda_get_table_details.name
+  policy_arn = data.aws_iam_policy.lambda_basic_execution.arn
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_get_table_details_inline" {
+  role       = aws_iam_role.lambda_get_table_details.name
+  policy_arn = aws_iam_policy.lambda_get_table_details.arn
+}
