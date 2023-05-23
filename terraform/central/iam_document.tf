@@ -11,3 +11,17 @@ data "aws_iam_policy_document" "glue" {
     }
   }
 }
+
+# ----------------------------------------------------------------------------------------------
+# AWS IAM Policy Document - State Machine
+# ----------------------------------------------------------------------------------------------
+data "aws_iam_policy_document" "sfn" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["states.amazonaws.com"]
+    }
+  }
+}
